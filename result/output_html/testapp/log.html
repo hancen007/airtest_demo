@@ -1,0 +1,2892 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+    <title lang="en">
+    E:\KAirtest\playground\testapp.air test report
+    </title>
+    
+    <!--[if lt IE 9]>
+    <script src="https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+
+    <link href="E:/KAirtest/airtest/report/css/bootstrap.min.css" rel="stylesheet">
+    <link href="E:/KAirtest/airtest/report/css/main.css" rel="stylesheet">
+
+    <link href="E:/KAirtest/airtest/report/css/report.css" rel="stylesheet">
+    <link href="E:/KAirtest/airtest/report/css/jquery.fancybox.css" rel="stylesheet">
+    <link href="E:/KAirtest/airtest/report/css/animate.css" rel="stylesheet">
+
+    <script src="E:/KAirtest/airtest/report/js/jquery-1.10.2.min.js"></script>
+    <script src="E:/KAirtest/airtest/report/js/echarts/echarts.common.min.js"></script>
+    <script src="E:/KAirtest/airtest/report/js/echarts/shine.js"></script>
+    <script src="E:/KAirtest/airtest/report/js/jquery-lang.js" charset="utf-8" type="text/javascript"></script>
+    <script src="E:/KAirtest/airtest/report/js/langpack/zh_CN.js" charset="utf-8" type="text/javascript"></script>
+    <script src="E:/KAirtest/airtest/report/js/lazyload.js" charset="utf-8" type="text/javascript"></script>
+    <script type="text/javascript">
+        var lang = new Lang();
+        lang.init({
+            defaultLang: 'en',
+            currentLang: 'en'
+        });
+    </script>
+    <style>
+    h2.header {
+        background-color: #3498db;
+        color: white;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 25px;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    div.screen_holder {
+      /*position: relative;*/
+      position: absolute;
+      margin-top: 10px;
+    }
+
+    div.screen_holder img {
+      /*max-height: 600px;*/
+    }
+
+    img.crop_image {
+      display: block;
+    }
+
+    img.spot {
+      position: absolute;
+      width:50px;
+      height:50px;
+      margin-left: -25px;
+      margin-top: -25px;
+    }
+
+    div.arrow {
+      display: flex;
+      align-items: center;
+      left: 100px;
+      top: 100px;
+      position: absolute;
+      width: 120px;
+      margin-top: -15px;
+      margin-left: -6px;
+    }
+
+    div.start {
+      width: 12px;
+      height: 12px;
+      border-radius: 6px;
+      background-color: red;
+    }
+
+    div.line {
+        /* width:500px; */
+      flex: 1;
+      background:red;
+      height:10px;
+    }
+
+    div.end {
+      width: 0;
+	  height: 0;
+	  border-top: 15px solid transparent;
+	  border-bottom: 15px solid transparent;
+	  border-left: 20px solid red;
+    }
+
+    img.vector {
+    }
+
+    img#gif{
+      max-width: 100%;
+      min-height: 50px;
+      max-height: 380px;
+    }
+    
+    div.rect {
+      position: absolute;
+      border:2px solid red;
+      border-radius: 5px;
+      z-index: 99;
+    }
+
+    p.desc {
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .moa label {
+      font-size: 16px;
+    }
+
+    .moa .point {
+      font-size: 20px;
+      padding: 10px;
+      display: inline-block;
+    }
+
+    pre {
+      background-color: #23241f;
+    }
+
+    img.error-img {
+      max-width: 70px !important;
+    }
+
+    .ztree span.glyphicon {
+      color: red;
+    }
+
+    .scale {
+      transform-origin:top left;
+    }
+
+    #main {
+      padding-top: 10px;
+      min-height: 600px;
+    }
+
+    .fast-nav-step {
+      position: fixed;
+      right: 30px;
+      bottom: 10px;
+      z-index: 10;
+      padding: 10px 20px;
+      margin-left: 30px;
+      background: rgba(222,222,222,0.8);
+    }
+
+    .fast-nav-step label {
+      display: block;
+      border-bottom: 1px solid #7f8c8d;
+      padding-bottom: 6px;
+      margin-bottom: 12px;
+      color: #34495e;
+    }
+
+    .a-circle {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border-radius: 25px;
+
+      padding-top: 4px;
+
+      text-align: center;
+      color: white; 
+      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    }
+    
+    .fast-nav-step .a-circle:hover {
+      opacity: 0.9;
+      box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);    
+    }
+
+    #nav_steps {
+      max-height: 600px;
+      transition: max-height 0.25s ease-in;
+    }
+
+    #nav_steps.collapsed {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.15s ease-out;
+    }
+
+    div.assert {
+      padding-left: 20px;
+    }
+    .gif-wrap {
+        max-height: 400px;
+        text-align: center;
+    }
+
+    </style>
+  </head>
+
+  <body>
+
+    <div class="container-fluid" style="max-width:1400px;">
+      <div class="row">
+        <div id="main" class="main col-md-12">
+
+          
+
+          <div class="material moa" >
+              <h2><span lang="en">Test Case</span> testapp.air
+              
+              <label class="green" lang="en">[Passed]</label>
+              
+            </h2>
+            
+                <h4><span lang="en">Author:</span> ake</h4>
+            
+            <h4>2018-11-05 11:17:45 -- 2018-11-05 11:18:28</h4>
+
+            <h2 class="header" lang="en">Assert: Test Steps Summary</h2>
+            <hr>
+            <div class="row">
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+              
+            
+            </div>
+          </div>
+
+          <!-- 录屏 -->
+          <div class="row gif-wrap">
+          <div class="col-md-6">
+            
+              <p lang="en">No record information found.</p>
+            
+          </div>
+          </div>
+
+          <!--单步-->
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_1">
+
+            <h2 class="header">Step 1 <span class="step_title" lang="en">stop_app</span> <span class="step_title">[2018-11-05 11:17:45]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">stop_app</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">package: com.netease.poco.u3d.tutorial</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_2">
+
+            <h2 class="header">Step 2 <span class="step_title" lang="en">wake</span> <span class="step_title">[2018-11-05 11:17:48]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">wake</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_3">
+
+            <h2 class="header">Step 3 <span class="step_title" lang="en">start_app</span> <span class="step_title">[2018-11-05 11:17:49]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">start_app</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">activity: None</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">package: com.netease.poco.u3d.tutorial</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_4">
+
+            <h2 class="header">Step 4 <span class="step_title" lang="en">Sleep</span> <span class="step_title">[2018-11-05 11:17:51]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">sleep</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">secs: 2</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Wait for 2 seconds</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_5">
+
+            <h2 class="header">Step 5 <span class="step_title" lang="en">Touch</span> <span class="step_title">[2018-11-05 11:17:55]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">touch</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <img class="crop_image" data-width="136" data-height="82" src="E:\KAirtest\playground\testapp.air\tpl1539238558313.png" title="E:\KAirtest\playground\testapp.air\tpl1539238558313.png">
+                        <!-- 显示截图相关的参数 (供后续的图像识别的调试使用) -->
+                        <p class="desc">resolution: [1280, 720]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">times: 1</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">kwargs: {}</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">screenshot</span></label>
+                  </div>
+                  <!-- scale移除文档流， 使用js对screen_place赋值高度来占位 -->
+                  <div class="col-xs-9" style="overflow-x:auto; overflow-y:hidden;">
+                    <div class="screen_holder">
+                      <img class="fancybox scale lazyload" data-src="E:\KAirtest\result\logs\testapp\1541387874422.jpg" url="E:\KAirtest\result\logs\testapp\1541387874422.jpg" title="E:\KAirtest\result\logs\testapp\1541387874422.jpg">
+                      
+                        
+                          <img class="spot animated infinite rubberBand" src="E:/KAirtest/airtest/report/image/target.png" data-top="387" data-left="964" style="top:387px;left:964px;">
+                        
+                      
+
+                      
+
+                      <!-- rect area -->
+                      
+                        
+                          <div class="rect"  data-left="862" data-top="326" data-height="123" data-width="204"></div>
+                        
+                      
+                    </div>
+                    <br />
+                    <div class="screen_place"></div>
+                  </div>
+                </div>
+
+                
+                    <p class="desc"><span class="point glyphicon glyphicon-play"></span><span lang="en">Matching confidence:</span> 0.9735348224639893</p>
+                
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Touch target image</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_6">
+
+            <h2 class="header">Step 6 <span class="step_title" lang="en">Touch</span> <span class="step_title">[2018-11-05 11:17:55]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">touch</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <img class="crop_image" data-width="163" data-height="72" src="E:\KAirtest\playground\testapp.air\tpl1539238573262.png" title="E:\KAirtest\playground\testapp.air\tpl1539238573262.png">
+                        <!-- 显示截图相关的参数 (供后续的图像识别的调试使用) -->
+                        <p class="desc">resolution: [1280, 720]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">times: 1</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">kwargs: {}</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">screenshot</span></label>
+                  </div>
+                  <!-- scale移除文档流， 使用js对screen_place赋值高度来占位 -->
+                  <div class="col-xs-9" style="overflow-x:auto; overflow-y:hidden;">
+                    <div class="screen_holder">
+                      <img class="fancybox scale lazyload" data-src="E:\KAirtest\result\logs\testapp\1541387875743.jpg" url="E:\KAirtest\result\logs\testapp\1541387875743.jpg" title="E:\KAirtest\result\logs\testapp\1541387875743.jpg">
+                      
+                        
+                          <img class="spot animated infinite rubberBand" src="E:/KAirtest/airtest/report/image/target.png" data-top="374" data-left="298" style="top:374px;left:298px;">
+                        
+                      
+
+                      
+
+                      <!-- rect area -->
+                      
+                        
+                          <div class="rect"  data-left="176" data-top="320" data-height="108" data-width="244"></div>
+                        
+                      
+                    </div>
+                    <br />
+                    <div class="screen_place"></div>
+                  </div>
+                </div>
+
+                
+                    <p class="desc"><span class="point glyphicon glyphicon-play"></span><span lang="en">Matching confidence:</span> 0.8731303215026855</p>
+                
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Touch target image</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_7">
+
+            <h2 class="header">Step 7 <span class="step_title" lang="en">record_ui</span> <span class="step_title">[2018-11-05 11:17:57]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">record_ui</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">driver: &lt;poco.drivers.unity3d.unity3d_poco.UnityPoco object at 0x000000000B806710&gt;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">args: ([0.157291666, 0.312129617], [0.346874997, 0.393425941])</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">action: &#39;swipe&#39;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">ui: UIObjectProxy of &#34;star[0]&#34;</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_8">
+
+            <h2 class="header">Step 8 <span class="step_title" lang="en">Swipe</span> <span class="step_title">[2018-11-05 11:17:59]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">swipe</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v1: [301.99999872, 337.09998636]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">vector: [0.346874997, 0.393425941]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">kwargs: {&#39;steps&#39;: 81, &#39;duration&#39;: 2.0}</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v2: None</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">screenshot</span></label>
+                  </div>
+                  <!-- scale移除文档流， 使用js对screen_place赋值高度来占位 -->
+                  <div class="col-xs-9" style="overflow-x:auto; overflow-y:hidden;">
+                    <div class="screen_holder">
+                      <img class="fancybox scale lazyload" data-src="E:\KAirtest\result\logs\testapp\1541387877381.jpg" url="E:\KAirtest\result\logs\testapp\1541387877381.jpg" title="E:\KAirtest\result\logs\testapp\1541387877381.jpg">
+                      
+                        
+                          <img class="spot animated infinite rubberBand" src="E:/KAirtest/airtest/report/image/target.png" data-top="337.09998636" data-left="301.99999872" style="top:337.09998636px;left:301.99999872px;">
+                        
+                      
+
+                      
+                        
+                          
+                            <div class="arrow" data-x="665.0" data-y="424.0">
+                              <div class="start"></div>
+                              <div class="line"></div>
+                              <div class="end"></div>
+                            </div>
+                          
+                      
+
+                      <!-- rect area -->
+                      
+                    </div>
+                    <br />
+                    <div class="screen_place"></div>
+                  </div>
+                </div>
+
+                
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Swipe on screen</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_9">
+
+            <h2 class="header">Step 9 <span class="step_title" lang="en">record_ui</span> <span class="step_title">[2018-11-05 11:17:59]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">record_ui</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">driver: &lt;poco.drivers.unity3d.unity3d_poco.UnityPoco object at 0x000000000B806710&gt;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">args: ([0.3359375, 0.312129617], [0.16822916300000001, 0.393425941])</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">action: &#39;swipe&#39;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">ui: UIObjectProxy of &#34;star[1]&#34;</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_10">
+
+            <h2 class="header">Step 10 <span class="step_title" lang="en">Swipe</span> <span class="step_title">[2018-11-05 11:18:02]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">swipe</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v1: [645.0, 337.09998636]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">vector: [0.16822916300000001, 0.393425941]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">kwargs: {&#39;steps&#39;: 81, &#39;duration&#39;: 2.0}</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v2: None</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">screenshot</span></label>
+                  </div>
+                  <!-- scale移除文档流， 使用js对screen_place赋值高度来占位 -->
+                  <div class="col-xs-9" style="overflow-x:auto; overflow-y:hidden;">
+                    <div class="screen_holder">
+                      <img class="fancybox scale lazyload" data-src="E:\KAirtest\result\logs\testapp\1541387879898.jpg" url="E:\KAirtest\result\logs\testapp\1541387879898.jpg" title="E:\KAirtest\result\logs\testapp\1541387879898.jpg">
+                      
+                        
+                          <img class="spot animated infinite rubberBand" src="E:/KAirtest/airtest/report/image/target.png" data-top="337.09998636" data-left="645.0" style="top:337.09998636px;left:645.0px;">
+                        
+                      
+
+                      
+                        
+                          
+                            <div class="arrow" data-x="322.0" data-y="424.0">
+                              <div class="start"></div>
+                              <div class="line"></div>
+                              <div class="end"></div>
+                            </div>
+                          
+                      
+
+                      <!-- rect area -->
+                      
+                    </div>
+                    <br />
+                    <div class="screen_place"></div>
+                  </div>
+                </div>
+
+                
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Swipe on screen</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_11">
+
+            <h2 class="header">Step 11 <span class="step_title" lang="en">record_ui</span> <span class="step_title">[2018-11-05 11:18:02]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">record_ui</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">driver: &lt;poco.drivers.unity3d.unity3d_poco.UnityPoco object at 0x000000000B806710&gt;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">args: ([0.511458337, 0.312129617], [-0.00729167399999997, 0.393425941])</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">action: &#39;swipe&#39;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">ui: UIObjectProxy of &#34;star[2]&#34;</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_12">
+
+            <h2 class="header">Step 12 <span class="step_title" lang="en">Swipe</span> <span class="step_title">[2018-11-05 11:18:04]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">swipe</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v1: [982.00000704, 337.09998636]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">vector: [-0.00729167399999997, 0.393425941]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">kwargs: {&#39;steps&#39;: 81, &#39;duration&#39;: 2.0}</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v2: None</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">screenshot</span></label>
+                  </div>
+                  <!-- scale移除文档流， 使用js对screen_place赋值高度来占位 -->
+                  <div class="col-xs-9" style="overflow-x:auto; overflow-y:hidden;">
+                    <div class="screen_holder">
+                      <img class="fancybox scale lazyload" data-src="E:\KAirtest\result\logs\testapp\1541387882463.jpg" url="E:\KAirtest\result\logs\testapp\1541387882463.jpg" title="E:\KAirtest\result\logs\testapp\1541387882463.jpg">
+                      
+                        
+                          <img class="spot animated infinite rubberBand" src="E:/KAirtest/airtest/report/image/target.png" data-top="337.09998636" data-left="982.00000704" style="top:337.09998636px;left:982.00000704px;">
+                        
+                      
+
+                      
+                        
+                          
+                            <div class="arrow" data-x="-14.0" data-y="424.0">
+                              <div class="start"></div>
+                              <div class="line"></div>
+                              <div class="end"></div>
+                            </div>
+                          
+                      
+
+                      <!-- rect area -->
+                      
+                    </div>
+                    <br />
+                    <div class="screen_place"></div>
+                  </div>
+                </div>
+
+                
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Swipe on screen</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_13">
+
+            <h2 class="header">Step 13 <span class="step_title" lang="en">record_ui</span> <span class="step_title">[2018-11-05 11:18:04]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">record_ui</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">driver: &lt;poco.drivers.unity3d.unity3d_poco.UnityPoco object at 0x000000000B806710&gt;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">args: ([0.690625, 0.312129617], [-0.18645833700000003, 0.393425941])</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">action: &#39;swipe&#39;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">ui: UIObjectProxy of &#34;star[3]&#34;</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_14">
+
+            <h2 class="header">Step 14 <span class="step_title" lang="en">Swipe</span> <span class="step_title">[2018-11-05 11:18:07]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">swipe</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v1: [1326.0, 337.09998636]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">vector: [-0.18645833700000003, 0.393425941]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">kwargs: {&#39;steps&#39;: 81, &#39;duration&#39;: 2.0}</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v2: None</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">screenshot</span></label>
+                  </div>
+                  <!-- scale移除文档流， 使用js对screen_place赋值高度来占位 -->
+                  <div class="col-xs-9" style="overflow-x:auto; overflow-y:hidden;">
+                    <div class="screen_holder">
+                      <img class="fancybox scale lazyload" data-src="E:\KAirtest\result\logs\testapp\1541387884985.jpg" url="E:\KAirtest\result\logs\testapp\1541387884985.jpg" title="E:\KAirtest\result\logs\testapp\1541387884985.jpg">
+                      
+                        
+                          <img class="spot animated infinite rubberBand" src="E:/KAirtest/airtest/report/image/target.png" data-top="337.09998636" data-left="1326.0" style="top:337.09998636px;left:1326.0px;">
+                        
+                      
+
+                      
+                        
+                          
+                            <div class="arrow" data-x="-358.0" data-y="424.0">
+                              <div class="start"></div>
+                              <div class="line"></div>
+                              <div class="end"></div>
+                            </div>
+                          
+                      
+
+                      <!-- rect area -->
+                      
+                    </div>
+                    <br />
+                    <div class="screen_place"></div>
+                  </div>
+                </div>
+
+                
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Swipe on screen</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_15">
+
+            <h2 class="header">Step 15 <span class="step_title" lang="en">record_ui</span> <span class="step_title">[2018-11-05 11:18:07]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">record_ui</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">driver: &lt;poco.drivers.unity3d.unity3d_poco.UnityPoco object at 0x000000000B806710&gt;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">args: ([0.8723958, 0.312129617], [-0.36822913700000004, 0.393425941])</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">action: &#39;swipe&#39;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">ui: UIObjectProxy of &#34;star[4]&#34;</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_16">
+
+            <h2 class="header">Step 16 <span class="step_title" lang="en">Swipe</span> <span class="step_title">[2018-11-05 11:18:09]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">swipe</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v1: [1674.9999360000002, 337.09998636]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">vector: [-0.36822913700000004, 0.393425941]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">kwargs: {&#39;steps&#39;: 81, &#39;duration&#39;: 2.0}</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v2: None</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">screenshot</span></label>
+                  </div>
+                  <!-- scale移除文档流， 使用js对screen_place赋值高度来占位 -->
+                  <div class="col-xs-9" style="overflow-x:auto; overflow-y:hidden;">
+                    <div class="screen_holder">
+                      <img class="fancybox scale lazyload" data-src="E:\KAirtest\result\logs\testapp\1541387887389.jpg" url="E:\KAirtest\result\logs\testapp\1541387887389.jpg" title="E:\KAirtest\result\logs\testapp\1541387887389.jpg">
+                      
+                        
+                          <img class="spot animated infinite rubberBand" src="E:/KAirtest/airtest/report/image/target.png" data-top="337.09998636" data-left="1674.9999360000002" style="top:337.09998636px;left:1674.9999360000002px;">
+                        
+                      
+
+                      
+                        
+                          
+                            <div class="arrow" data-x="-706.0" data-y="424.0">
+                              <div class="start"></div>
+                              <div class="line"></div>
+                              <div class="end"></div>
+                            </div>
+                          
+                      
+
+                      <!-- rect area -->
+                      
+                    </div>
+                    <br />
+                    <div class="screen_place"></div>
+                  </div>
+                </div>
+
+                
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Swipe on screen</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_17">
+
+            <h2 class="header">Step 17 <span class="step_title" lang="en">Touch</span> <span class="step_title">[2018-11-05 11:18:11]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">touch</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <img class="crop_image" data-width="86" data-height="46" src="E:\KAirtest\playground\testapp.air\tpl1539238611022.png" title="E:\KAirtest\playground\testapp.air\tpl1539238611022.png">
+                        <!-- 显示截图相关的参数 (供后续的图像识别的调试使用) -->
+                        <p class="desc">resolution: [1280, 720]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">times: 1</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">kwargs: {}</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">screenshot</span></label>
+                  </div>
+                  <!-- scale移除文档流， 使用js对screen_place赋值高度来占位 -->
+                  <div class="col-xs-9" style="overflow-x:auto; overflow-y:hidden;">
+                    <div class="screen_holder">
+                      <img class="fancybox scale lazyload" data-src="E:\KAirtest\result\logs\testapp\1541387890941.jpg" url="E:\KAirtest\result\logs\testapp\1541387890941.jpg" title="E:\KAirtest\result\logs\testapp\1541387890941.jpg">
+                      
+                        
+                          <img class="spot animated infinite rubberBand" src="E:/KAirtest/airtest/report/image/target.png" data-top="929" data-left="159" style="top:929px;left:159px;">
+                        
+                      
+
+                      
+
+                      <!-- rect area -->
+                      
+                        
+                          <div class="rect"  data-left="95" data-top="895" data-height="69" data-width="129"></div>
+                        
+                      
+                    </div>
+                    <br />
+                    <div class="screen_place"></div>
+                  </div>
+                </div>
+
+                
+                    <p class="desc"><span class="point glyphicon glyphicon-play"></span><span lang="en">Matching confidence:</span> 0.8961004018783569</p>
+                
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Touch target image</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_18">
+
+            <h2 class="header">Step 18 <span class="step_title" lang="en">Touch</span> <span class="step_title">[2018-11-05 11:18:11]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">touch</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <img class="crop_image" data-width="153" data-height="77" src="E:\KAirtest\playground\testapp.air\tpl1539238623055.png" title="E:\KAirtest\playground\testapp.air\tpl1539238623055.png">
+                        <!-- 显示截图相关的参数 (供后续的图像识别的调试使用) -->
+                        <p class="desc">resolution: [1280, 720]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">times: 1</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">kwargs: {}</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">screenshot</span></label>
+                  </div>
+                  <!-- scale移除文档流， 使用js对screen_place赋值高度来占位 -->
+                  <div class="col-xs-9" style="overflow-x:auto; overflow-y:hidden;">
+                    <div class="screen_holder">
+                      <img class="fancybox scale lazyload" data-src="E:\KAirtest\result\logs\testapp\1541387891514.jpg" url="E:\KAirtest\result\logs\testapp\1541387891514.jpg" title="E:\KAirtest\result\logs\testapp\1541387891514.jpg">
+                      
+                        
+                          <img class="spot animated infinite rubberBand" src="E:/KAirtest/airtest/report/image/target.png" data-top="378" data-left="298" style="top:378px;left:298px;">
+                        
+                      
+
+                      
+
+                      <!-- rect area -->
+                      
+                        
+                          <div class="rect"  data-left="184" data-top="321" data-height="115" data-width="229"></div>
+                        
+                      
+                    </div>
+                    <br />
+                    <div class="screen_place"></div>
+                  </div>
+                </div>
+
+                
+                    <p class="desc"><span class="point glyphicon glyphicon-play"></span><span lang="en">Matching confidence:</span> 0.869356095790863</p>
+                
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Touch target image</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_19">
+
+            <h2 class="header">Step 19 <span class="step_title" lang="en">record_ui</span> <span class="step_title">[2018-11-05 11:18:11]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">record_ui</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">driver: &lt;poco.drivers.unity3d.unity3d_poco.UnityPoco object at 0x000000000B806710&gt;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">args: ([0.5058516, 0.699592054], [-0.34855993399999996, -0.387462437])</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">action: &#39;swipe&#39;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">ui: UIObjectProxy of &#34;star[3]&#34;</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_20">
+
+            <h2 class="header">Step 20 <span class="step_title" lang="en">Swipe</span> <span class="step_title">[2018-11-05 11:18:14]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">swipe</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v1: [971.235072, 755.5594183200001]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">vector: [-0.34855993399999996, -0.387462437]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">kwargs: {&#39;steps&#39;: 81, &#39;duration&#39;: 2.0}</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v2: None</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">screenshot</span></label>
+                  </div>
+                  <!-- scale移除文档流， 使用js对screen_place赋值高度来占位 -->
+                  <div class="col-xs-9" style="overflow-x:auto; overflow-y:hidden;">
+                    <div class="screen_holder">
+                      <img class="fancybox scale lazyload" data-src="E:\KAirtest\result\logs\testapp\1541387891926.jpg" url="E:\KAirtest\result\logs\testapp\1541387891926.jpg" title="E:\KAirtest\result\logs\testapp\1541387891926.jpg">
+                      
+                        
+                          <img class="spot animated infinite rubberBand" src="E:/KAirtest/airtest/report/image/target.png" data-top="755.5594183200001" data-left="971.235072" style="top:755.5594183200001px;left:971.235072px;">
+                        
+                      
+
+                      
+                        
+                          
+                            <div class="arrow" data-x="-669.0" data-y="-418.0">
+                              <div class="start"></div>
+                              <div class="line"></div>
+                              <div class="end"></div>
+                            </div>
+                          
+                      
+
+                      <!-- rect area -->
+                      
+                    </div>
+                    <br />
+                    <div class="screen_place"></div>
+                  </div>
+                </div>
+
+                
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Swipe on screen</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_21">
+
+            <h2 class="header">Step 21 <span class="step_title" lang="en">record_ui</span> <span class="step_title">[2018-11-05 11:18:14]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">record_ui</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">driver: &lt;poco.drivers.unity3d.unity3d_poco.UnityPoco object at 0x000000000B806710&gt;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">args: ([0.503485441, 0.7040909], [-0.16754794100000003, -0.39196128299999994])</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">action: &#39;swipe&#39;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">ui: UIObjectProxy of &#34;star[0]&#34;</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_22">
+
+            <h2 class="header">Step 22 <span class="step_title" lang="en">Swipe</span> <span class="step_title">[2018-11-05 11:18:16]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">swipe</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v1: [966.69204672, 760.4181719999999]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">vector: [-0.16754794100000003, -0.39196128299999994]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">kwargs: {&#39;steps&#39;: 81, &#39;duration&#39;: 2.0}</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v2: None</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">screenshot</span></label>
+                  </div>
+                  <!-- scale移除文档流， 使用js对screen_place赋值高度来占位 -->
+                  <div class="col-xs-9" style="overflow-x:auto; overflow-y:hidden;">
+                    <div class="screen_holder">
+                      <img class="fancybox scale lazyload" data-src="E:\KAirtest\result\logs\testapp\1541387894425.jpg" url="E:\KAirtest\result\logs\testapp\1541387894425.jpg" title="E:\KAirtest\result\logs\testapp\1541387894425.jpg">
+                      
+                        
+                          <img class="spot animated infinite rubberBand" src="E:/KAirtest/airtest/report/image/target.png" data-top="760.4181719999999" data-left="966.69204672" style="top:760.4181719999999px;left:966.69204672px;">
+                        
+                      
+
+                      
+                        
+                          
+                            <div class="arrow" data-x="-321.0" data-y="-423.0">
+                              <div class="start"></div>
+                              <div class="line"></div>
+                              <div class="end"></div>
+                            </div>
+                          
+                      
+
+                      <!-- rect area -->
+                      
+                    </div>
+                    <br />
+                    <div class="screen_place"></div>
+                  </div>
+                </div>
+
+                
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Swipe on screen</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_23">
+
+            <h2 class="header">Step 23 <span class="step_title" lang="en">record_ui</span> <span class="step_title">[2018-11-05 11:18:16]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">record_ui</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">driver: &lt;poco.drivers.unity3d.unity3d_poco.UnityPoco object at 0x000000000B806710&gt;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">args: ([0.5041727, 0.7042267], [0.007285636999999956, -0.39209708299999996])</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">action: &#39;swipe&#39;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">ui: UIObjectProxy of &#34;star[4]&#34;</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_24">
+
+            <h2 class="header">Step 24 <span class="step_title" lang="en">Swipe</span> <span class="step_title">[2018-11-05 11:18:19]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">swipe</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v1: [968.0115840000001, 760.564836]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">vector: [0.007285636999999956, -0.39209708299999996]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">kwargs: {&#39;steps&#39;: 81, &#39;duration&#39;: 2.0}</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v2: None</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">screenshot</span></label>
+                  </div>
+                  <!-- scale移除文档流， 使用js对screen_place赋值高度来占位 -->
+                  <div class="col-xs-9" style="overflow-x:auto; overflow-y:hidden;">
+                    <div class="screen_holder">
+                      <img class="fancybox scale lazyload" data-src="E:\KAirtest\result\logs\testapp\1541387896967.jpg" url="E:\KAirtest\result\logs\testapp\1541387896967.jpg" title="E:\KAirtest\result\logs\testapp\1541387896967.jpg">
+                      
+                        
+                          <img class="spot animated infinite rubberBand" src="E:/KAirtest/airtest/report/image/target.png" data-top="760.564836" data-left="968.0115840000001" style="top:760.564836px;left:968.0115840000001px;">
+                        
+                      
+
+                      
+                        
+                          
+                            <div class="arrow" data-x="13.0" data-y="-423.0">
+                              <div class="start"></div>
+                              <div class="line"></div>
+                              <div class="end"></div>
+                            </div>
+                          
+                      
+
+                      <!-- rect area -->
+                      
+                    </div>
+                    <br />
+                    <div class="screen_place"></div>
+                  </div>
+                </div>
+
+                
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Swipe on screen</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_25">
+
+            <h2 class="header">Step 25 <span class="step_title" lang="en">record_ui</span> <span class="step_title">[2018-11-05 11:18:19]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">record_ui</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">driver: &lt;poco.drivers.unity3d.unity3d_poco.UnityPoco object at 0x000000000B806710&gt;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">args: ([0.5039042, 0.7046391], [0.18672080000000002, -0.39250948299999994])</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">action: &#39;swipe&#39;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">ui: UIObjectProxy of &#34;star[2]&#34;</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_26">
+
+            <h2 class="header">Step 26 <span class="step_title" lang="en">Swipe</span> <span class="step_title">[2018-11-05 11:18:21]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">swipe</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v1: [967.496064, 761.010228]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">vector: [0.18672080000000002, -0.39250948299999994]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">kwargs: {&#39;steps&#39;: 81, &#39;duration&#39;: 2.0}</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v2: None</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">screenshot</span></label>
+                  </div>
+                  <!-- scale移除文档流， 使用js对screen_place赋值高度来占位 -->
+                  <div class="col-xs-9" style="overflow-x:auto; overflow-y:hidden;">
+                    <div class="screen_holder">
+                      <img class="fancybox scale lazyload" data-src="E:\KAirtest\result\logs\testapp\1541387899470.jpg" url="E:\KAirtest\result\logs\testapp\1541387899470.jpg" title="E:\KAirtest\result\logs\testapp\1541387899470.jpg">
+                      
+                        
+                          <img class="spot animated infinite rubberBand" src="E:/KAirtest/airtest/report/image/target.png" data-top="761.010228" data-left="967.496064" style="top:761.010228px;left:967.496064px;">
+                        
+                      
+
+                      
+                        
+                          
+                            <div class="arrow" data-x="357.9999999999999" data-y="-423.0">
+                              <div class="start"></div>
+                              <div class="line"></div>
+                              <div class="end"></div>
+                            </div>
+                          
+                      
+
+                      <!-- rect area -->
+                      
+                    </div>
+                    <br />
+                    <div class="screen_place"></div>
+                  </div>
+                </div>
+
+                
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Swipe on screen</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_27">
+
+            <h2 class="header">Step 27 <span class="step_title" lang="en">record_ui</span> <span class="step_title">[2018-11-05 11:18:21]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">record_ui</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">driver: &lt;poco.drivers.unity3d.unity3d_poco.UnityPoco object at 0x000000000B806710&gt;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">args: ([0.504045367, 0.7054478], [0.36835043300000003, -0.39331818299999993])</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">action: &#39;swipe&#39;</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">ui: UIObjectProxy of &#34;star[1]&#34;</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_28">
+
+            <h2 class="header">Step 28 <span class="step_title" lang="en">Swipe</span> <span class="step_title">[2018-11-05 11:18:24]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">swipe</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v1: [967.7671046400001, 761.8836239999999]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">vector: [0.36835043300000003, -0.39331818299999993]</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">kwargs: {&#39;steps&#39;: 81, &#39;duration&#39;: 2.0}</p>
+                      
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">v2: None</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">screenshot</span></label>
+                  </div>
+                  <!-- scale移除文档流， 使用js对screen_place赋值高度来占位 -->
+                  <div class="col-xs-9" style="overflow-x:auto; overflow-y:hidden;">
+                    <div class="screen_holder">
+                      <img class="fancybox scale lazyload" data-src="E:\KAirtest\result\logs\testapp\1541387901986.jpg" url="E:\KAirtest\result\logs\testapp\1541387901986.jpg" title="E:\KAirtest\result\logs\testapp\1541387901986.jpg">
+                      
+                        
+                          <img class="spot animated infinite rubberBand" src="E:/KAirtest/airtest/report/image/target.png" data-top="761.8836239999999" data-left="967.7671046400001" style="top:761.8836239999999px;left:967.7671046400001px;">
+                        
+                      
+
+                      
+                        
+                          
+                            <div class="arrow" data-x="707.0" data-y="-424.0">
+                              <div class="start"></div>
+                              <div class="line"></div>
+                              <div class="end"></div>
+                            </div>
+                          
+                      
+
+                      <!-- rect area -->
+                      
+                    </div>
+                    <br />
+                    <div class="screen_place"></div>
+                  </div>
+                </div>
+
+                
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Swipe on screen</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="" id="main_script_29">
+
+            <h2 class="header">Step 29 <span class="step_title" lang="en">Test OK</span> <span class="step_title">[2018-11-05 11:18:25]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_30">
+
+            <h2 class="header">Step 30 <span class="step_title" lang="en">Sleep</span> <span class="step_title">[2018-11-05 11:18:27]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">sleep</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">secs: 2</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+              <p class="desc"><span class="point glyphicon glyphicon-play"></span>Wait for 2 seconds</p>
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+          <div class="material moa main_script" data-trace="None" id="main_script_31">
+
+            <h2 class="header">Step 31 <span class="step_title" lang="en">stop_app</span> <span class="step_title">[2018-11-05 11:18:28]</span></h2>
+            <hr>
+            <div class="step_content">
+              <!--单步操作-->
+
+              <!--代码和参数显示-->
+                
+                <div class="row">
+                  <div class="col-xs-3">
+                    <div class="point">
+                      <span class="glyphicon glyphicon-play"></span>
+                    </div>
+                      <label><span lang="en">stop_app</span></label>
+                  </div>
+                  <div class="col-xs-9">
+                    
+                      
+                        <!-- 其他参数 -->
+                        <p class="desc">package: com.netease.poco.u3d.tutorial</p>
+                      
+                    
+                  </div>
+                </div>
+                
+
+              <!--运行时的截图-->
+              
+
+              <!--描述信息-->
+              
+
+              <!--单步结果-->
+              
+              <div class="alert alert-success">
+                <span class="glyphicon glyphicon-ok"></span>
+                  <span lang="en">Execution succeeded</span>
+              </div>
+              
+
+            </div>
+          </div>
+          
+
+          <!-- 导航栏 -->
+          <div class="fast-nav-step">
+              <label><span lang="en">Steps navigation</span>
+              <button class="btn btn-info btn-sm" id="collapse_nav_step"><i class="glyphicon glyphicon-chevron-down"></i></button>
+              <button class="btn btn-info btn-sm" id="expand_nav_step"><i class="glyphicon glyphicon-chevron-up"></i></button>
+            </label>
+            <div id="nav_steps">
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_1">1</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_2">2</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_3">3</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_4">4</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_5">5</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_6">6</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_7">7</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_8">8</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_9">9</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_10">10</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_11">11</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_12">12</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_13">13</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_14">14</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_15">15</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_16">16</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_17">17</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_18">18</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_19">19</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_20">20</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_21">21</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_22">22</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_23">23</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_24">24</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_25">25</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_26">26</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_27">27</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_28">28</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_29">29</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_30">30</a>
+                
+              
+                
+                <a class="a-circle bg-green nav_main_script" href="#main_script_31">31</a>
+                
+              
+              <a class="a-circle bg-green" href="#">Top</a>
+            </div>
+          </div>
+
+
+        </div>
+      </div>  
+    </div>
+  
+    
+    <div class="footer">
+        <span lang="en">Related information</span>
+    </div> 
+    
+  
+  
+  <script src="E:/KAirtest/airtest/report/js/bootstrap.min.js"></script>
+
+  <!-- hightlight js -->
+  <link href="E:/KAirtest/airtest/report/css/monokai_sublime.min.css" rel="stylesheet">  
+  <script src="E:/KAirtest/airtest/report/js/highlight.min.js"></script>  
+  <script >hljs.initHighlightingOnLoad();</script>
+
+  <script>
+  $(function() {
+      iframe = window.frameElement;
+      if (iframe) {
+          window.frameElement.setAttribute("allowfullscreen", "allowfullscreen")
+      }
+    $("#collapse_nav_step").click(function() {
+      $("#nav_steps").addClass('collapsed');
+      $(this).hide();
+      $("#expand_nav_step").show();
+    });
+
+    $("#expand_nav_step").click(function() {
+      $("#nav_steps").removeClass('collapsed');
+      $(this).hide();
+      $("#collapse_nav_step").show();
+    });
+    $("#collapse_nav_step").click();
+    $("#collapse_nav_step").hide(); // init
+  });
+
+  $(function(){
+    var scale = 0.5;
+    var imgWidth = 0;
+    var imgHeight = 0;
+    var imgPercent = 0.5;
+
+    $("img").error(function () {
+      var orsrc = $(this).attr("src")
+      if(!orsrc){ return }
+      if(orsrc.indexOf("report.gif") > -1){
+        setTimeout(function(){
+          //console.log($(this).attr("src"));
+          $(this).attr("src", 'report.gif?timestamp=' + new Date().getTime());
+          //console.log($(this).attr("src"));
+        }.bind(this), 5000)
+        return
+      }
+
+      $(this).unbind("error")
+      .addClass('error-img')
+      .attr("src", "E:/KAirtest/airtest/report/image/broken.png")
+      .attr("orgin-src", orsrc);
+    });
+    
+    //to trigger error event manual 
+    $("#gif").attr("src", "report.gif?timestamp=" + new Date().getTime());
+
+    $(".screen_holder").find("img.fancybox").load(function(e){
+
+      imgWidth = Math.max($(this).width(), imgWidth);
+      imgHeight = Math.max($(this).height(), imgHeight)
+      var dwidth = $("div.material.moa").width()
+      if (imgWidth > imgHeight) {
+          //图片最大宽度
+          var s = (dwidth * imgPercent) / imgWidth
+      }
+      else {
+          var s = (dwidth * imgPercent) / imgHeight
+      }
+      s = Math.round(s * 100) / 100
+      scale_img(s);
+    })
+
+    function scale_img(i) {
+      $(".crop_image").each(function (e) {
+        let width = $(this).data("width")
+        let height = $(this).data("height")
+
+        crop_css = {
+          "hieght": height * i,
+          "width": width * i
+        }
+        $(this).css(crop_css)
+      })
+
+      $(".screen_holder").find("img.fancybox").each(function(e){
+        var h = $(this).height();
+        var sc = 'scale('+ i +','+ i +')';
+        
+        var scale_css = {
+          '-ms-transform': sc,
+          '-webkit-transform': sc,
+          '-moz-transform': sc,
+          'transform': sc,
+        }
+        
+        $(this).css(scale_css)
+
+        var sp = $(this).siblings('img.spot');
+        var rect = $(this).siblings('div.rect');
+        var vt = $(this).siblings('div.arrow');
+
+        rect.css({
+          'top':rect.data('top') * i ,
+          'left':rect.data('left') * i ,
+          'width':rect.data('width') * i,
+          'height':rect.data('height') * i,
+        });
+
+        var top = sp.data('top');
+        var left = sp.data('left');
+        sp.css({
+          'top':top*i,
+          'left':left*i,
+        });
+
+
+        var vt_x = vt.data('x') * i;
+        var vt_y = - vt.data('y') * i;
+
+        var vt_width = Math.sqrt(vt_x * vt_x + vt_y * vt_y)
+
+        var rotation = 360*Math.atan2(vt_y, vt_x)/(2*Math.PI)
+        var rt =  'rotate(' + -rotation + 'deg)';
+        var rotate_css = {
+          '-ms-transform': rt,
+          '-webkit-transform': rt,
+          '-moz-transform': rt,
+          'transform': rt,
+          'transform-origin': '6px 15px',
+        };
+        console.log(rt)
+        vt.css(rotate_css);
+        vt.css({
+          'top':top*i,
+          'left':left*i,
+          'width': vt_width
+        });
+
+        $(this).parents('.screen_holder').siblings('.screen_place').height(h*i);
+      });
+    }
+    //resize img
+    scale_img(scale);
+
+    $(window).resize(function() {
+      var ww = $('body').width();
+      if (ww < 900){
+        scale = 0.25;
+      }
+      else if (ww < 1100 ){
+        scale = 0.3;
+      }
+      else if( ww < 1300){
+        scale = 0.4;  
+      }else{
+        scale = 0.5;
+      }
+
+      if(imgWidth != 0){
+        //实时计算
+        var dwidth = $("div.material.moa").width()
+        if (imgWidth > imgHeight) {
+            //图片最大宽度
+            var scale = (dwidth * imgPercent) / imgWidth
+        }
+        else {
+            var scale = (dwidth * imgPercent) / imgHeight
+        }
+        // scale = (dwidth*imgPercent)/imgWidth
+        // scale = Math.round(scale * 100) / 100
+      }
+
+      scale_img(scale)
+    });
+    $(window).resize();
+    // 延迟加载图片
+    lazyload();
+  });
+  </script>
+
+  <script>
+  $(window).resize();
+  </script>
+  </body>
+</html>
